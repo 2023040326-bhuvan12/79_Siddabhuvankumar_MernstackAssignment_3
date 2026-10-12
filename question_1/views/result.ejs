@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Registration Result</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Details</h1>
+
+    <table>
+
+        <tr>
+            <th>Username</th>
+            <td><%= username %></td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td><%= email %></td>
+        </tr>
+
+        <tr>
+            <th>Gender</th>
+            <td><%= gender %></td>
+        </tr>
+
+        <tr>
+            <th>Hobbies</th>
+
+            <td>
+
+                <%= hobbies.join(", ") %>
+
+            </td>
+
+        </tr>
+
+        <tr>
+
+            <th>Profile Picture</th>
+
+            <td>
+
+                <img
+                    src="/uploads/<%= profilePic %>"
+                    class="profile"
+                >
+
+                <br>
+
+                <a
+                    href="/download/<%= profilePic %>"
+                >
+                    Download Profile Picture
+                </a>
+
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>Other Pictures</th>
+
+            <td>
+
+                <% otherPics.forEach(pic => { %>
+
+                    <div class="image-box">
+
+                        <img
+                            src="/uploads/<%= pic.filename %>"
+                        >
+
+                        <br>
+
+                        <a
+                            href="/download/<%= pic.filename %>"
+                        >
+                            Download
+                        </a>
+
+                    </div>
+
+                <% }) %>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

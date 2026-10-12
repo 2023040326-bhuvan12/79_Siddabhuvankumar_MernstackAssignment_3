@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Registration Form</title>
+
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Registration Form</h1>
+
+
+    <% if (errors.length > 0) { %>
+
+        <div class="errors">
+
+            <h3>Please fix these errors:</h3>
+
+            <ul>
+
+                <% errors.forEach(error => { %>
+
+                    <li>
+                        <%= error.msg %>
+                    </li>
+
+                <% }) %>
+
+            </ul>
+
+        </div>
+
+    <% } %>
+
+
+    <form
+        action="/register"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+        <label>Username</label>
+
+        <input
+            type="text"
+            name="username"
+            value="<%= old.username || '' %>"
+        >
+
+
+        <label>Password</label>
+
+        <input
+            type="password"
+            name="password"
+        >
+        <label>Confirm Password</label>
+        <input
+            type="password"
+            name="confirmPassword"
+        >
+        <label>Email</label>
+        <input
+            type="email"
+            name="email"
+            value="<%= old.email || '' %>"
+        >
+        <label>Gender</label>
+        <div>
+            <input
+                type="radio"
+                name="gender"
+                value="Male"
+                <%= old.gender === "Male" ? "checked" : "" %>
+            >
+            Male
+            <input
+                type="radio"
+                name="gender"
+                value="Female"
+                <%= old.gender === "Female" ? "checked" : "" %>
+            >
+            Female
+        </div>
+        <label>Hobbies</label>
+        <div>
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Cricket"
+                <%= old.hobbies &&
+                    (Array.isArray(old.hobbies)
+                    ? old.hobbies.includes("Cricket")
+                    : old.hobbies === "Cricket")
+                    ? "checked"
+                    : "" %>
+            >
+            Cricket
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Reading"
+                <%= old.hobbies &&
+                    (Array.isArray(old.hobbies)
+                    ? old.hobbies.includes("Reading")
+                    : old.hobbies === "Reading")
+                    ? "checked"
+                    : "" %>
+            >
+            Reading
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Music"
+                <%= old.hobbies &&
+                    (Array.isArray(old.hobbies)
+                    ? old.hobbies.includes("Music")
+                    : old.hobbies === "Music")
+                    ? "checked"
+                    : "" %>
+            >
+            Music
+            <input
+                type="checkbox"
+                name="hobbies"
+                value="Gaming"
+                <%= old.hobbies &&
+                    (Array.isArray(old.hobbies)
+                    ? old.hobbies.includes("Gaming")
+                    : old.hobbies === "Gaming")
+                    ? "checked"
+                    : "" %>
+            >
+            Gaming
+        </div>
+        <label>Profile Picture</label>
+        <input
+            type="file"
+            name="profilePic"
+            accept="image/png,image/jpeg"
+        >
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

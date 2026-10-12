@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Employee</title>
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>
+
+        <%= employee
+            ? "Edit Employee"
+            : "Add Employee" %>
+
+    </h1>
+
+
+    <form
+        action="<%= employee
+            ? '/employees/edit/' + employee._id
+            : '/employees/add' %>"
+        method="POST"
+    >
+
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            name="name"
+            value="<%= employee
+                ? employee.name
+                : '' %>"
+            required
+        >
+
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            name="email"
+            value="<%= employee
+                ? employee.email
+                : '' %>"
+            required
+        >
+
+
+        <label>Basic Salary</label>
+
+        <input
+            type="number"
+            name="basicSalary"
+            value="<%= employee
+                ? employee.basicSalary
+                : '' %>"
+            required
+        >
+
+
+        <button type="submit">
+
+            <%= employee
+                ? "Update Employee"
+                : "Add Employee" %>
+
+        </button>
+
+    </form>
+
+
+    <br>
+
+    <a href="/employees">
+        Back
+    </a>
+
+</div>
+
+</body>
+
+</html>
